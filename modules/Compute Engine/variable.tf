@@ -17,3 +17,7 @@ variable "image_type" {
 variable "no_of_inst" {
   type = number
 }
+
+variable "tags" {
+  type = list(string)
+}
