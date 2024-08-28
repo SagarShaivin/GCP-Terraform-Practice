@@ -7,7 +7,7 @@ variable "inst_type" {
 }
 
 variable "zone_name" {
-  type = string
+  type = list(string)
 }
 
 variable "image_type" {
