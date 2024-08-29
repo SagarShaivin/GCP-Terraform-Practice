@@ -21,3 +21,11 @@ variable "no_of_inst" {
 variable "tags" {
   type = list(string)
 }
+
+variable "ssh_user" {
+  type = string
+}
+
+variable "ssh_public_key" {
+  type = string
+}

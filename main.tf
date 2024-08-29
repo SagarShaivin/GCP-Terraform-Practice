@@ -22,4 +22,6 @@ module "gce-1" {
   no_of_inst = 1
   image_type = "ubuntu-os-cloud/ubuntu-2204-lts"
   tags = ["tag-1"]
+  ssh_user = var.ssh_user
+  ssh_public_key = var.ssh_public_key
 }
