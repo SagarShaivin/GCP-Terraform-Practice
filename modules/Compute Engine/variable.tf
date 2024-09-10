@@ -29,3 +29,11 @@ variable "ssh_user" {
 variable "ssh_public_key" {
   type = string
 }
+
+variable "vpc_network" {
+  type = string
+}
+
+variable "vpc_subnetwork" {
+  type = string
+}

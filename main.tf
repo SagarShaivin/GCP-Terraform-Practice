@@ -5,14 +5,14 @@ provider "google" {
   project = var.gcp_project_id
 }
 
-#module "vpc-1" {
-#  source = "./modules/VPC"
-#  network_name = "vpc-1"
-#  no_of_subnets = 2
-#  subnet_name = ["subnet-1", "subnet-2"]
-#  subnet_iprange = ["10.0.1.0/24", "10.0.2.0/24"]
-#  region_name = ["us-central1", "us-west2"]
-#}
+module "vpc-1" {
+  source = "./modules/VPC"
+  network_name = "vpc-1"
+  no_of_subnets = 2
+  subnet_name = ["subnet-1", "subnet-2"]
+  subnet_iprange = ["10.0.1.0/24", "10.0.2.0/24"]
+  region_name = ["us-central1", "us-west2"]
+}
 
 module "gce-1" {
   source = "./modules/Compute Engine"
@@ -24,4 +24,6 @@ module "gce-1" {
   tags = ["tag-1"]
   ssh_user = var.ssh_user
   ssh_public_key = var.ssh_public_key
+  vpc_network = module.vpc-1.network_name
+  vpc_subnetwork = element(module.vpc-1.subnet_name,1) # subnet_name, 1 because 1 means subnet-2 and 0 means subnet-1
 }

@@ -16,7 +16,8 @@ resource "google_compute_instance" "gce" {
   tags = var.tags
 
   network_interface {
-    network = "default"
+    network = var.vpc_network
+    subnetwork = var.vpc_subnetwork
 
     access_config {
       // Ephemeral public IP
@@ -26,4 +27,19 @@ resource "google_compute_instance" "gce" {
   metadata = {
     ssh-keys = "${var.ssh_user}:${file(var.ssh_public_key)}"
   }
+
+}
+
+resource "google_compute_firewall" "allow-http" {
+  name    = "allow-custom-port"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "8000"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]  
+
+  target_tags = var.tags
 }

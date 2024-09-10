@@ -12,4 +12,4 @@ resource "google_compute_subnetwork" "subnet" {
   region = element(var.region_name, count.index)
   network = google_compute_network.vpc.name
   private_ip_google_access = true
-}
+} 

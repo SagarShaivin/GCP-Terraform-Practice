@@ -1,5 +1,5 @@
-triage_1_terraform_key = "/home/shaivin-sagar/Downloads/espark/imp-keys/triage-1-terraform/upbeat-yew-432506-j1-7d22e215da9f.json"
-gcp_project_id = "upbeat-yew-432506-j1"
+triage_1_terraform_key = "/home/shaivin-sagar/Downloads/espark/imp-keys/triage-1-terraform/shaivin-project-3731f28927c0.json"
+gcp_project_id = "shaivin-project"
 
-ssh_user = "shaivin-sagar"
-ssh_public_key = "~/.ssh/id_rsa.pub"
+ssh_user = "shaivin"
+ssh_public_key = "/home/shaivin-sagar/shaivin_public-key.pub"
