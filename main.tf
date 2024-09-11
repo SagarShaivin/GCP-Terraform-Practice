@@ -13,6 +13,7 @@ module "vpc-1" {
   subnet_name = ["subnet-1", "subnet-2"]
   subnet_iprange = ["10.0.1.0/24", "10.0.2.0/24"]
   region_name = ["us-central1", "us-west2"]
+  isprivate = [true, false]
 }
 
 # This module will help to create custom firewall rule, we can create multiple modules if we need 
@@ -25,6 +26,24 @@ module "firewall-1" {
   allowed_ports = ["80","8000"]
   allowed_iprange = ["0.0.0.0/0"]
   target_instances = ["tag-1", "tag-2"]
+}
+
+module "NAT-1" {
+  source = "./modules/NAT"
+  router_name = "nat-router-1"
+  vpc_name = module.vpc-1.network_name
+  region_name = "us-central1"
+  private_subnet-name = module.vpc-1.subnet_name[0]
+
+}
+
+module "NAT-2" {
+  source = "./modules/NAT"
+  router_name = "nat-router-2"
+  vpc_name = module.vpc-1.network_name
+  region_name = "us-west2"
+  private_subnet-name = module.vpc-1.subnet_name[1]
+
 }
 
 # This module will create instances as per our requirement but make sure you provide proper zone,

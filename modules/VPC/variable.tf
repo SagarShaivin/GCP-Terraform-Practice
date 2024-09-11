@@ -18,3 +18,7 @@ variable "no_of_subnets" {
   type = number
 }
 
+variable "isprivate" {
+  type = list(bool)
+}
+
