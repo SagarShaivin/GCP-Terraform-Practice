@@ -3,7 +3,7 @@ variable "inst_name" {
 }
 
 variable "inst_type" {
-  type = string
+  type = list(string)
 }
 
 variable "zone_name" {

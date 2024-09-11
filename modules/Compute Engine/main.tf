@@ -2,7 +2,7 @@
 
 resource "google_compute_instance" "gce" {
   name = element(var.inst_name, count.index)    
-  machine_type = var.inst_type
+  machine_type = element(var.inst_type,count.index)
   zone = element(var.zone_name, count.index)
   count = var.no_of_inst
   
@@ -30,16 +30,3 @@ resource "google_compute_instance" "gce" {
 
 }
 
-resource "google_compute_firewall" "allow-http" {
-  name    = "allow-custom-port"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80", "8000"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]  
-
-  target_tags = var.tags
-}
