@@ -3,22 +3,14 @@ variable "network_name" {
 }
 
 variable "subnet_name" {
-  type = list(string)
+  type = string
 }
 
 variable "subnet_iprange" {
-  type = list(string)
+  type = string
 }
 
 variable "region_name" {
-  type = list(string)
-}
-
-variable "no_of_subnets" {
-  type = number
-}
-
-variable "isprivate" {
-  type = list(bool)
+  type = string
 }
 

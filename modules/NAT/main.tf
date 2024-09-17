@@ -18,3 +18,8 @@ resource "google_compute_router" "nat_router" {
   #  source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
   #}
 }
+
+#resource "google_compute_address" "bastion_ip" {
+#  name = "bastion-static-ip"
+#  region = var.region
+#}

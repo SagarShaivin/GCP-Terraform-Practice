@@ -1,10 +1,9 @@
 # Compute Engine main.tf file
 
 resource "google_compute_instance" "gce" {
-  name = element(var.inst_name, count.index)    
-  machine_type = element(var.inst_type,count.index)
-  zone = element(var.zone_name, count.index)
-  count = var.no_of_inst
+  name = var.inst_name
+  machine_type = var.inst_type
+  zone = var.zone_name
   
   boot_disk {
     initialize_params {

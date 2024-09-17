@@ -1,21 +1,17 @@
 variable "inst_name" {
-  type = list(string)
+  type = string
 }
 
 variable "inst_type" {
-  type = list(string)
+  type = string
 }
 
 variable "zone_name" {
-  type = list(string)
+  type = string
 }
 
 variable "image_type" {
   type = string
-}
-
-variable "no_of_inst" {
-  type = number
 }
 
 variable "tags" {

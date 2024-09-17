@@ -6,11 +6,11 @@ resource "google_compute_network" "vpc" {
 }
 
 resource "google_compute_subnetwork" "subnet" {
-  count = var.no_of_subnets
-  name = element(var.subnet_name, count.index)
-  ip_cidr_range = element(var.subnet_iprange, count.index)
-  region = element(var.region_name, count.index)
+  
+  name = var.subnet_name
+  ip_cidr_range = var.subnet_iprange
+  region = var.region_name
   network = google_compute_network.vpc.name
-  private_ip_google_access = element(var.isprivate, count.index)
+  private_ip_google_access = true
 } 
 
