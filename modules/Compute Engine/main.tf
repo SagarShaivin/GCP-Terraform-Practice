@@ -15,6 +15,8 @@ resource "google_compute_instance" "gce" {
 
   tags = var.tags
 
+  allow_stopping_for_update = true
+
   network_interface {
     network = var.vpc_network
     subnetwork = var.vpc_subnetwork
