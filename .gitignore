@@ -9,8 +9,8 @@
 .terraform/
 
 # Ignore SSH keys
-keys/service-account-key.json
-keys/ssh_private_key
+keys/shaivin-project-3731f28927c0.json
+keys/shaivin_public-key.pub
 
 # Ignore Terraform variable files if they contain sensitive data
 terraform.tfvars
