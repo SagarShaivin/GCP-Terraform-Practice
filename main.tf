@@ -48,5 +48,5 @@ module "gce-1" {
   ssh_user = var.ssh_user
   ssh_public_key = var.ssh_public_key
   vpc_network = module.vpc-1.network_name
-  vpc_subnetwork = element(module.vpc-1.subnet_name,0) # subnet_name, 1 because 1 means subnet-2 and 0 means subnet-1
+  vpc_subnetwork = module.vpc-1.subnet_name
 }

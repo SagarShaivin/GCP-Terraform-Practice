@@ -1,0 +1,20 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Backup files
+*.tfstate.backup
+
+# Terraform workspace files
+.terraform/
+
+# Ignore SSH keys
+keys/service-account-key.json
+keys/ssh_private_key
+
+# Ignore Terraform variable files if they contain sensitive data
+terraform.tfvars
+*.tfvars
+
+# Ignore local environment files
+*.env
