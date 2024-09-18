@@ -51,4 +51,3 @@ module "gce-1" {
   vpc_subnetwork = module.vpc-1.subnet_name
 }
 
-# 
