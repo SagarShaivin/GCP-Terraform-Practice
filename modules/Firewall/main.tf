@@ -1,4 +1,4 @@
-resource "google_compute_firewall" "allow-http" {
+resource "google_compute_firewall" "firewall-rules" {
   name    = var.firewall_name
   network = var.target_vpc
 
@@ -8,6 +8,5 @@ resource "google_compute_firewall" "allow-http" {
   }
 
   source_ranges = var.allowed_iprange  
-
   target_tags = var.target_instances
 }

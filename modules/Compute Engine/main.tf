@@ -20,8 +20,12 @@ resource "google_compute_instance" "gce" {
     network = var.vpc_network
     subnetwork = var.vpc_subnetwork
 
-    access_config {
-      // Ephemeral public IP
+    # Conditionally add public IP (access_config block)
+    dynamic "access_config" {
+      for_each = var.assign_public_ip && var.static_ip != "" ? [1] : []
+      content {
+        nat_ip = var.static_ip
+      }
     }
   }
 

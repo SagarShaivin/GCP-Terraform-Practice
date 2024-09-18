@@ -1,16 +1,4 @@
-variable "network_name" {
-  type = string
-}
-
-variable "subnet_name" {
-  type = string
-}
-
-variable "subnet_iprange" {
-  type = string
-}
-
-variable "region_name" {
+variable "vpc_name" {
   type = string
 }
 

@@ -33,3 +33,13 @@ variable "vpc_network" {
 variable "vpc_subnetwork" {
   type = string
 }
+
+variable "assign_public_ip" {
+  description = "Whether to assign a public IP (true) or keep the instance private (false)"
+  type        = bool
+  default     = false
+}
+
+variable "static_ip" {
+  type = string
+}
