@@ -37,10 +37,10 @@ module "static-ip-1" {
 module "firewall-1" {
   source = "./modules/Firewall"
 
-  firewall_name = "ssh-to-bastion"
+  firewall_name = "custom-ports-bastion"
   target_vpc = module.vpc-1.vpc_name
   protocol_type = "tcp"
-  allowed_ports = ["22"]
+  allowed_ports = ["22", "80", "8000"]
   allowed_iprange = ["0.0.0.0/0"]
   target_instances = ["tag-1"]
 }
@@ -48,36 +48,14 @@ module "firewall-1" {
 module "firewall-2" {
   source = "./modules/Firewall"
 
-  firewall_name = "ssh-bastion-to-private"
+  firewall_name = "custom-ports-pirivate-instance"
   target_vpc = module.vpc-1.vpc_name
   protocol_type = "tcp"
-  allowed_ports = ["22"]
-  allowed_iprange = ["10.0.1.0/24"]
-  target_instances = ["tag-2"]
-}
-
-module "firewall-3" {
-  source = "./modules/Firewall"
-
-  firewall_name = "custom-ports-bastion"
-  target_vpc = module.vpc-1.vpc_name
-  protocol_type = "tcp"
-  allowed_ports = ["22", "2222"]
+  allowed_ports = ["22", "80", "8000"]
   allowed_iprange = ["0.0.0.0/0"]
-  target_instances = ["tag-1"]
-}
-
-
-module "firewall-4" {
-  source = "./modules/Firewall"
-
-  firewall_name = "laravel-app"
-  target_vpc = module.vpc-1.vpc_name
-  protocol_type = "tcp"
-  allowed_ports = ["8000"]
-  allowed_iprange = ["10.0.1.0/24"]
   target_instances = ["tag-2"]
 }
+
 
 module "NAT-1" {
   source = "./modules/NAT"
@@ -93,7 +71,7 @@ module "NAT-1" {
 module "gce-1" {
   source = "./modules/Compute Engine"
   inst_name = "bastion-host"
-  inst_type = "e2-micro"
+  inst_type = "e2-medium"
   zone_name = "us-central1-a"
   image_type = "ubuntu-os-cloud/ubuntu-2204-lts"
   tags = ["tag-1"]
@@ -112,7 +90,7 @@ module "gce-2" {
   zone_name = "us-central1-a"
   image_type = "ubuntu-os-cloud/ubuntu-2204-lts"
   tags = ["tag-2"]
-  static_ip = ""
+ static_ip = ""
   ssh_user = var.ssh_user
   ssh_public_key = var.ssh_public_key
   vpc_network = module.vpc-1.vpc_name
