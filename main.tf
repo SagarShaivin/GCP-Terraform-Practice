@@ -97,3 +97,17 @@ module "gce-2" {
   vpc_subnetwork = module.subnet-2.subnet_name
   assign_public_ip = false
 }
+
+
+module "gcs_bucket" {
+  source = "./modules/GCS"
+  bucket_name = "my-laravel-app-bucket"
+  bucket_location = "us-central1"
+  bucket_storage_class = "STANDARD"
+  force_destroy = true
+  uniform_bucket_level_access = true
+  versioning = true
+  lifecycle_age = 365
+  bucket_writer_member = "serviceAccount:shaivin-service-account@shaivin-project.iam.gserviceaccount.com"
+  bucket_reader_member = "user:shaivinlogilite@gmail.com"
+}
